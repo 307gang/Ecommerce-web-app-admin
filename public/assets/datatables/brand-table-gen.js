@@ -1,3 +1,11 @@
+var dataSet = [
+    ['001', 'a production', '1/1/2022'],
+    ['002', 'b production', '1/1/2022'],
+    ['003', 'c production', '1/1/2022'],
+    ['004', 'd production', '1/1/2022'],
+    ['005', 'f production', '1/1/2022'],
+]
+
 
 $(document).ready(() => {
     $('#brand-table').DataTable({
@@ -8,12 +16,11 @@ $(document).ready(() => {
             {title: 'ID'},
             {title: 'Hãng'},
             {title: 'Ngày thêm'},
-            {title: 'Số lượng sản phẩm'}
         ],
         dom: 'Bfrtip',
         buttons: [
             'csv', 'excel', 'pdf'
-        ]
-        //data: dataSet
+        ],
+        data: dataSet
     });
 });

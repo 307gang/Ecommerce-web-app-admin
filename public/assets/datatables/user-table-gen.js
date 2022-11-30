@@ -1,9 +1,9 @@
 var dataSet = [
-    ['001', 'aaa', 'bbbbb', 'cccc@mail.com', '01/01/2022'],
-    ['002', 'ddd', 'eeeee', 'ffff@mail.com', '02/01/2022'],
-    ['003', 'ggg', 'hhhhh', 'iiii@mail.com', '03/01/2022'],
-    ['004', 'kkk', 'jjjjj', 'mmmm@mail.com', '04/01/2022'],
-    ['005', 'nnn', 'ooooo', 'vvvv@mail.com', '05/01/2022'],
+    ['001', 'nva', 'nguyen van a','vana@gmail.com','0123456789','1/1/2022'],
+    ['002', 'nvb', 'tran van b','vanv@gmail.com','0123456788','3/3/2022'],
+    ['003', 'lvc', 'le van c','vanc@gmail.com','0123456787','5/5/2022'],
+    ['004', 'ptd', 'pham thi d','thid@gmail.com','0123456786','7/6/2022'],
+    ['005', 'cne', 'cao ngoc e','ngoce@gmail.com','0123456785','8/11/2022']
 ]
 
 $(document).ready(() => {
@@ -16,6 +16,7 @@ $(document).ready(() => {
             {title: 'Tên tài khoản'},
             {title: 'Tên người dùng'},
             {title: 'Email'},
+            {title: 'Số điện thoại'},
             {title: 'Ngày khởi tạo'}
         ],
         dom: 'Bfrtip',
