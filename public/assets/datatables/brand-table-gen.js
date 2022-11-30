@@ -1,3 +1,7 @@
+dataSet =[
+
+];
+
 
 $(document).ready(() => {
     $('#brand-table').DataTable({
@@ -13,7 +17,7 @@ $(document).ready(() => {
         dom: 'Bfrtip',
         buttons: [
             'csv', 'excel', 'pdf'
-        ]
-        //data: dataSet
+        ],
+        data: dataSet
     });
 });
