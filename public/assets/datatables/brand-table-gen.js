@@ -1,3 +1,9 @@
+var dataSet = [
+    ['001', 'a production', '1/1/2022'],
+    ['002', 'd production', '1/1/2022'],
+    ['003', 'g production', '1/1/2022'],
+    ['004', 'f production', '1/1/2022']
+]
 
 $(document).ready(() => {
     $('#brand-table').DataTable({
@@ -12,7 +18,7 @@ $(document).ready(() => {
         dom: 'Bfrtip',
         buttons: [
             'csv', 'excel', 'pdf'
-        ]
-        //data: dataSet
+        ],
+        data: dataSet
     });
 });
