@@ -10,6 +10,11 @@ const usersRoute = require('./users/route/usersRoute');
 const itemsRoute = require('./items/route/itemsRoute');
 const brandsRoute = require('./brands/route/brandsRoute');
 
+const productDatabase = require("./database/route/productsRoute");
+const categoryDatabase = require("./database/route/categoriesRoute");
+const brandDatabase = require("./database/route/brandsRoute");
+const totalDatabase = require('./database/route/totalRoute');
+
 const PORT = 8080;
 
 var app = express();
@@ -44,6 +49,10 @@ app.use('/account', accountRoute);
 app.use('/users', usersRoute);
 app.use('/shop-items', itemsRoute);
 app.use('/shop-brands', brandsRoute);
+app.use('/api/product', productDatabase);
+app.use('/api/brand', brandDatabase);
+app.use('/api/category', categoryDatabase);
+app.use('/api/total', totalDatabase);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
