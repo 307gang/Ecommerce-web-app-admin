@@ -80,27 +80,27 @@
                     <form>
                         <div class="form-group">
                             <label for="formGroupExampleInput">ID</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ID">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ID" value={{product.product_id}}>
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Tên sản phẩm</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="tên">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="tên" value={{product.product_name}}>
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Thông tin sản phảm</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Thông tin sản phẩm">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Thông tin sản phẩm" value={{product.description}}>
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Ngày thêm</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Ngày thêm">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Ngày thêm" value="{{product.created_date}}">
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput">Hãng sản xuất</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Hãng xuất">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Hãng xuất" value={{product.brand_id}}>
                         </div>
                         <div class="form-group">
                             <label for="formGroupExampleInput2">Giá sản phẩm</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Giá sản phẩm">
+                            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Giá sản phẩm" value={{product.price}}>
                         </div>
                         <div class="checkbox">
                             <label><input type="checkbox">Ẩn</label>

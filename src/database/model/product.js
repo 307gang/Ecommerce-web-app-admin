@@ -129,3 +129,9 @@ module.exports.getSameCategoryProduct = async (id) => {
       );
     return rows;
 }
+
+
+module.exports.getProductTable = async () => {
+    var {rows}= await db.query("select pd.product_id, pd.product_name, b.brand_name, pd.created_date, pd.price, pd.product_stock, pd.hidden from products pd, brands b where b.brand_id = pd.brand_id");
+    return rows;
+}

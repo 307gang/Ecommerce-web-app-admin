@@ -17,7 +17,7 @@ $(document).ready(() => {
             dataSet.push(Object.values(value));
         });
 
-        $('#item-table').DataTable({
+        var table = $('#item-table').DataTable({
             "language": {
                 "url": "https://cdn.datatables.net/plug-ins/1.13.1/i18n/vi.json"
             },
@@ -25,12 +25,10 @@ $(document).ready(() => {
                 {title: 'ID'},
                 {title: 'Sản phẩm'},
                 {title: 'Hãng sản xuất'},
-                {title: 'Thông tin'},
                 {title: 'Ngày thêm'},
                 {title: 'Giá'},
-                {title: 'link anh'},
-                {title: 'Sô lượng'},
-                {title: 'Hien'}
+                {title: 'Số lượng'},
+                {title: 'Ẩn'}
             ],
             dom: 'Bfrtip',
             buttons: [
@@ -38,10 +36,13 @@ $(document).ready(() => {
             ],
             data: dataSet
         });
-        $('#item-table').on('click', 'tbody tr', () => {
-            window.location.href = '/shop-items/info';
+
+        $('#item-table tbody').on('click', 'tr', function () {
+            console.log(table.row(this).data());
+            window.location.href = `/shop-items/info/${table.row(this).data()[0]}`;
         });
     });
+    
 
     
 });
