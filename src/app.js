@@ -2,6 +2,7 @@ const createError = require('http-errors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const path = require('path');
 
 const indexRoute = require('./index/route/indexRoute');
 const accountRoute = require('./accounts/route/accountRoute');
@@ -20,9 +21,17 @@ app.use(cookieParser());
 app.use(morgan('dev'));
 
 //view
-var viewLocation = ['./index/view', './table/view', './accounts/view', './users/view', './items/view', './brands/view', './error'];
+var viewLocation = [
+  path.join(__dirname, '/index/view'), 
+  path.join(__dirname, '/table/view'), 
+  path.join(__dirname, '/accounts/view'), 
+  path.join(__dirname, '/users/view'), 
+  path.join(__dirname, '/items/view'), 
+  path.join(__dirname, '/brands/view'), 
+  path.join(__dirname, '/error')
+];
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '/public')));
 app.set('views', viewLocation);
 app.set('view engine', 'hbs');
 
