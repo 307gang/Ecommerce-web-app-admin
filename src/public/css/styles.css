@@ -11716,3 +11716,15 @@ body {
 	text-decoration:none;
 	text-shadow:0px -1px 0px #2b665e;
 }
+
+
+.form-btn-end{
+  display: flex;
+  justify-content:flex-end ;
+}
+
+.data-table{
+  width: 80%;
+  overflow-x: auto;
+  white-space: nowrap;
+}
