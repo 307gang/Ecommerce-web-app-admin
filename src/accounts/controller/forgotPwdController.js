@@ -1,3 +1,3 @@
 module.exports = (req, res) => {
-    res.render("password");
+    res.render("password", {layout: false});
 };

@@ -3,6 +3,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const path = require('path');
+const hbs = require('hbs')
 
 const indexRoute = require('./index/route/indexRoute');
 const accountRoute = require('./accounts/route/accountRoute');
@@ -15,6 +16,7 @@ const categoryDatabase = require("./database/route/categoriesRoute");
 const brandDatabase = require("./database/route/brandsRoute");
 const totalDatabase = require('./database/route/totalRoute');
 
+
 const PORT = 8080;
 
 var app = express();
@@ -25,8 +27,15 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(morgan('dev'));
 
+hbs.registerHelper("block", function (name) {
+  let val = (blocks[name] || []).join("\n");
+  blocks[name] = [];
+  return val;
+});
+
 //view
 var viewLocation = [
+  path.join(__dirname, '/public/assets'),
   path.join(__dirname, '/index/view'), 
   path.join(__dirname, '/table/view'), 
   path.join(__dirname, '/accounts/view'), 
@@ -62,7 +71,7 @@ app.use((req, res, next) => {
 // error handler
 app.use((err, req, res, next) => {
   // render the error page
-  res.status(err.status).render("404");
+  res.status(err.status).render("404", {layout: false});
 });
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT} and running on http://localhost:${PORT}`));
