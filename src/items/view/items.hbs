@@ -4,23 +4,36 @@
         <div id="layoutSidenav_content">
             <main>
                 <h1>Danh sách các sẩn phẩm </h1>
-                <table id="item-table" class="hover cell-border order-column data-table"></table>
+                <table id="item-table" class="hover cell-border order-column data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Sản phẩm</th>
+                            <th>Hãng sản xuất</th>
+                            <th>Ngày thêm</th>
+                            <th>Giá sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Ẩn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each products}}
+                        <tr>
+                            <td>{{product_id}}</td>
+                            <td>{{product_name}}</td>
+                            <td>{{brand_name}}</td>
+                            <td>{{created_date}}</td>
+                            <td>{{price}}</td>
+                            <td>{{product_stock}}</td>
+                            <td>{{hidden}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
                 <div class="form-btn-end">
                     <a href="#" class="form-btn form-btn-end" >Thêm sản phẩm</a>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; 307gang team</div>
-                        <div>
-                            <a href="#">Chính sách bảo mật </a>
-                            &middot;
-                            <a href="#">Các điều khoản về dịch vụ</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
