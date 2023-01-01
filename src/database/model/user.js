@@ -54,7 +54,7 @@ module.exports.addUser = async (email, password, fullname, phone, address) => {
 };
 
 module.exports.getUserByEmail = async (email) => {
-  var {rows} = await db.query(
+  var { rows } = await db.query(
     "select * from users where email = $1 limit 1",
     [email]
   );
@@ -62,11 +62,18 @@ module.exports.getUserByEmail = async (email) => {
 };
 
 module.exports.emailExists = async (email) => {
-  console.log("checking ...")
-  const {rowCount} = await db.query(
+  console.log("checking ...");
+  const { rowCount } = await db.query(
     "select * from users where email = $1 limit 1",
     [email]
   );
   console.log(rowCount);
   return rowCount > 0;
+};
+
+module.exports.getAllUser = async () => {
+  const { rows } = await db.query(
+    "select c.uuid, u.email, c.full_name, c.phone_number, c.address, c.create_date, c.banned from users u, customers c where u.uuid = c.uuid order by uuid"
+  );
+  return rows;
 };

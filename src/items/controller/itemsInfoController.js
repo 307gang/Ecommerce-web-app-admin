@@ -1,8 +1,6 @@
-const db = require("../../database/model/product");
+const model = require("../models/getItemInfo");
 
 module.exports = async (req, res) => {
-    var {id} = req.params
-    var product = await db.getProductById(id);
-    console.log(product);
-    res.render("items-info", {product});
+  var product = await model(req);
+  res.render("itemInfo", { product });
 };
