@@ -59,16 +59,7 @@ create table product_image( -- bảng ảnh phụ sản phẩm
     foreign key (product_id) references products(product_id)
 );
 
-create table orders(
-	order_id varchar(4),
-    order_name varchar(100),
-    description text,
-    customer_id varchar(6),
-    create_date date,
 
-    primary key (order_id),
-    foreign key(customer_id) references customers(uuid)
-); 
 
 create table categories(
     category_id varchar(4),
@@ -86,6 +77,33 @@ create table category_product (
     foreign key (product_id) references products(product_id)
 
 );
+
+create table carts {
+    cart_id serial 
+    customer_id varchar(6),
+    primary key (cart_id, customer_id),
+    foreign key(customer_id) references customers(uuid)
+}
+
+create table carts_product {
+    cart_id int,
+    product_id varchar(6),
+    create_date date
+    primary key (cart_id),
+    foreign key (product_id) references products(product_id)
+}
+ 
+create table orders(
+	order_id varchar(4),
+    order_name varchar(100),
+    description text,
+    customer_id varchar(6),
+    create_date date,
+    status int,
+
+    primary key (order_id),
+    foreign key(customer_id) references customers(uuid)
+); 
 
 create table order_product(
 	order_id varchar(4),
