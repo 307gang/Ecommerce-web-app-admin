@@ -1,51 +1,85 @@
-
 <body class="sb-nav-fixed">
     <!-- main content--->
     <div id="layoutSidenav_content">
         <main>
-            <h1>ITEM'S INFO</h1>
-            <form method="post">
+            <h1>ITEM'S INFO</h1> 
+            <div class="row profile-form mb-5 align-items-center">    
+            <form method="post" class="mt-5 p-5 bg-light shadow d-flex flex-column">
+                <div class="form-group d-flex flex-column align-items-center" >
+                    <div>
+                        <img id="mainImgSelect" src="{{product.product_image}}" alt="Image"/>
+                    </div>
+                    <label for="get-file">Ảnh sản phẩm</label>
+                    <button id="upload-btn" type="button" class="btn btn-outline-info">Chọn hình ảnh</button>
+                    <button id="delete-btn" type="button" class="btn btn-outline-info">Xoá hình ảnh</button>
+                    <input id="get-file" type="file" accept="image/png, image/jpeg" hidden>
+                    <input id="file" value="{{product.product_image}}" name="product_image" hidden>
+                </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput">ID</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ID" value={{product.product_id}}>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ID" name="product_id" value="{{product.product_id}}">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Tên sản phẩm</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="tên" value={{product.product_name}}>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="tên" name="product_name" value="{{product.product_name}}">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput">Thông tin sản phảm</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Thông tin sản phẩm" value={{product.description}}>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Thông tin sản phẩm" name="description" value="{{product.description}}">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Ngày thêm</label>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Ngày thêm" value="{{product.created_date}}">
                 </div>
                 <div class="form-group">
-                    <label for="formGroupExampleInput">Hãng sản xuất</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Hãng xuất" value={{product.brand_id}}>
+                    <label for="brandSelect">Hãng sản xuất</label>
+                    <select class="form-select" aria-label="Default select example" name="brand_id" id="brandSelect">
+                        <option value="{{cur_brd.brand_id}}" selected>{{cur_brd.brand_name}}</option>
+                        {{#each brands}}
+                        <option value="{{brand_id}}">{{brand_name}}</option>
+                        {{/each}}
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="formGroupExampleInput2">Giá sản phẩm</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Giá sản phẩm" value={{product.price}}>
+                    <label for="catSelect">Hãng sản xuất</label>
+                    <select class="form-select" aria-label="Default select example" name="category_id" id="catSelect">
+                        <option value="{{cur_cat.category_id}}" selected>{{cur_cat.category_name}}</option>
+                        {{#each categories}}
+                        <option value="{{category_id}}">{{category_name}}</option>
+                        {{/each}}
+                    </select>
                 </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Giá sản phẩm (x * 1000 VND)</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Giá sản phẩm" name="price" value="{{product.price}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Số lượng</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Số lượng" name="product_stock" value="{{product.product_stock}}">
+                </div>
+
                 <div class="checkbox">
-                    <label><input type="checkbox">Ẩn</label>
+                    {{#if product.hidden}}
+                    <label><input type="checkbox" name="hidden" checked>Ẩn</label>
+                    {{else}}
+                    <label><input type="checkbox" name="hidden">Ẩn</label>
+                    {{/if}}
                 </div>
-                <button class="form-btn" type="submit">Lưu</button>
-                <a class="form-btn " href="/shop-items">Quay lại</a>
+                <button id="save"  type="submit" class="btn btn-outline-dark" type="button">Lưu</button>
+                <a class="btn btn-outline-secondary" href="/shop-items">Quay lại</a>
             </form>
+            </div>
         </main>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/b-2.3.3/datatables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="/js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="/assets/datatables/item-table-gen.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/imagekit-javascript/dist/imagekit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+    <script src="/js/itemInfo.js"></script>
 </body>

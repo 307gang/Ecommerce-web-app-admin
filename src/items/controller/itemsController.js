@@ -1,6 +1,6 @@
-const tableModel = require('../models/getItems');
+const itemModel = require("../models/getItems");
 
 module.exports = async (req, res) => {
-    var products = await tableModel();
-    res.render("items", {products});
+  var products = await itemModel.getAllItems();
+  res.render("items", { products });
 };

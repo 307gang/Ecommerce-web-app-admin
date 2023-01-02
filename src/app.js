@@ -17,6 +17,8 @@ const brandDatabase = require("./database/route/brandsRoute");
 const totalDatabase = require("./database/route/totalRoute");
 const userDatabase = require("./database/route/usersRoute");
 
+const imgRoute = require("./imgAuth/routes/authRoute");
+
 const PORT = 8080;
 
 var app = express();
@@ -63,6 +65,7 @@ app.use("/api/brand", brandDatabase);
 app.use("/api/category", categoryDatabase);
 app.use("/api/total", totalDatabase);
 app.use("/api/user", userDatabase);
+app.use("/auth", imgRoute);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
