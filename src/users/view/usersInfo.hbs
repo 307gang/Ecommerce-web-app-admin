@@ -1,0 +1,59 @@
+<body class="sb-nav-fixed">
+    <!-- main content--->
+    <div id="layoutSidenav_content">
+        <main>
+            <h1>Thông tin người dùng</h1> 
+            <div class="row profile-form mb-5 align-items-center">    
+            <form method="post" class="mt-5 p-5 bg-light shadow d-flex flex-column">
+                <div class="form-group d-flex flex-column align-items-center" >
+                    <div>
+                        <img id="mainImgSelect" src="{{customer.usr_avt}}" alt="Image"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">UUID</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ID" name="uuid" value="{{customer.uuid}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Email</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="email" name="email" value="{{customer.email}}"  readonly>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Họ và tên</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Tên" name="full_name" value="{{customer.fullname}}"  readonly>
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Địa chỉ</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Địa chỉ" name="address" value="{{customer.address}}" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Ngày vào</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="ngày vào" name="create_date" value="{{customer.create_date}}" readonly>
+                </div>
+
+
+                <div class="checkbox">
+                    {{#if product.hidden}}
+                    <label><input type="checkbox" name="hidden" checked>Banned</label>
+                    {{else}}
+                    <label><input type="checkbox" name="hidden">Ẩn</label>
+                    {{/if}}
+                </div>
+                <button id="save"  type="submit" class="btn btn-outline-dark" type="button">Lưu</button>
+                <a class="btn btn-outline-secondary" href="/users">Quay lại</a>
+            </form>
+            </div>
+        </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/b-2.3.3/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://unpkg.com/imagekit-javascript/dist/imagekit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"></script>
+    <script src="/js/itemInfo.js"></script>
+</body>

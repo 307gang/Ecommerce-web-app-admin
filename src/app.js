@@ -5,10 +5,11 @@ const morgan = require("morgan");
 const path = require("path");
 const hbs = require("hbs");
 
-const indexRoute = require("./index/routes/indexRoute");
+const dashboardRoute = require("./dashboard/routes/indexRoute");
 const accountRoute = require("./accounts/routes/accountRoute");
 const usersRoute = require("./users/routes/usersRoute");
 const itemsRoute = require("./items/routes/itemsRoute");
+const newItemRoute = require("./items/routes/newItemRoute");
 const brandsRoute = require("./brands/routes/brandsRoute");
 
 const productDatabase = require("./database/routes/productsRoute");
@@ -38,7 +39,7 @@ hbs.registerHelper("block", function (name) {
 //view
 var viewLocation = [
   path.join(__dirname, "/public/assets"),
-  path.join(__dirname, "/index/view"),
+  path.join(__dirname, "/dashboard/view"),
   path.join(__dirname, "/table/view"),
   path.join(__dirname, "/accounts/view"),
   path.join(__dirname, "/users/view"),
@@ -55,10 +56,11 @@ app.set("view engine", "hbs");
 app.get("/", (req, res) => {
   res.redirect("/dashboard");
 });
-app.use("/dashboard", indexRoute);
+app.use("/dashboard", dashboardRoute);
 app.use("/account", accountRoute);
 app.use("/users", usersRoute);
 app.use("/shop-items", itemsRoute);
+app.use("/new-items", newItemRoute);
 app.use("/shop-brands", brandsRoute);
 app.use("/api/product", productDatabase);
 app.use("/api/brand", brandDatabase);

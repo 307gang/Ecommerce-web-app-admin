@@ -17,24 +17,20 @@
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput">ID</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ID" name="product_id" value="{{product.product_id}}" readonly>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ID" name="product_id">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Tên sản phẩm</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="tên" name="product_name" value="{{product.product_name}}">
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="tên" name="product_name">
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput">Thông tin sản phảm</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Thông tin sản phẩm" name="description" value="{{product.description}}">
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Ngày thêm</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Ngày thêm" value="{{product.created_date}}" readonly>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Thông tin sản phẩm" name="description">
                 </div>
                 <div class="form-group">
                     <label for="brandSelect">Hãng sản xuất</label>
                     <select class="form-select" aria-label="Default select example" name="brand_id" id="brandSelect">
-                        <option value="{{cur_brd.brand_id}}" selected>{{cur_brd.brand_name}}</option>
+                        <option value="0" selected>Chọn hãng</option>
                         {{#each brands}}
                         <option value="{{brand_id}}">{{brand_name}}</option>
                         {{/each}}
@@ -43,7 +39,7 @@
                 <div class="form-group">
                     <label for="catSelect">Loại sản phẩm</label>
                     <select class="form-select" aria-label="Default select example" name="category_id" id="catSelect">
-                        <option value="{{cur_cat.category_id}}" selected>{{cur_cat.category_name}}</option>
+                        <option value="0" selected>Chọn loại hàng</option>
                         {{#each categories}}
                         <option value="{{category_id}}">{{category_name}}</option>
                         {{/each}}
@@ -51,22 +47,18 @@
                 </div>
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Giá sản phẩm (x * 1000 VND)</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Giá sản phẩm" name="price" value="{{product.price}}">
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Giá sản phẩm" name="price" >
                 </div>
 
                 <div class="form-group">
                     <label for="formGroupExampleInput2">Số lượng</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Số lượng" name="product_stock" value="{{product.product_stock}}">
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Số lượng" name="product_stock" >
                 </div>
 
                 <div class="checkbox">
-                    {{#if product.hidden}}
-                    <label><input type="checkbox" name="hidden" checked>Ẩn</label>
-                    {{else}}
                     <label><input type="checkbox" name="hidden">Ẩn</label>
-                    {{/if}}
                 </div>
-                <button id="save"  type="submit" class="btn btn-outline-dark" type="button">Lưu</button>
+                <button id="save"  type="submit" class="btn btn-outline-dark" type="button">Thêm</button>
                 <a class="btn btn-outline-secondary" href="/shop-items">Quay lại</a>
             </form>
             </div>

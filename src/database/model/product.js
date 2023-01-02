@@ -203,3 +203,34 @@ module.exports.updateProduct = async (
     [category_id, product_id]
   );
 };
+
+module.exports.addProduct = async (
+  product_id,
+  product_name,
+  brand_id,
+  category_id,
+  price,
+  description,
+  product_image,
+  product_stock,
+  hidden
+) => {
+  await db.query(
+    "insert into products (product_id, product_name, brand_id, description, price, product_image, product_stock, hidden) values($1, $2, $3, $4, $5, $6, $7, $8)",
+    [
+      product_id,
+      product_name,
+      brand_id,
+      description,
+      price,
+      product_image,
+      product_stock,
+      hidden,
+    ]
+  );
+
+  await db.query(
+    "insert into category_product(category_id, product_id) values ($1, $2)",
+    [category_id, product_id]
+  );
+};

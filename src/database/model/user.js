@@ -2,7 +2,6 @@ const db = require("./database");
 const { v4: uuidv4 } = require("uuid");
 
 async function generateUUID() {
-  console.log("genID");
   var { rowCount, rows } = await db.query("select uuid from users");
   while (true) {
     var exist = false;
@@ -24,7 +23,7 @@ module.exports.updateUser = async (id, fullname, phone, address) => {
 
 module.exports.getUserInfo = async (id) => {
   var { rows } = await db.query(
-    "select c.* from customers c where c.uuid = $1",
+    "select c.*, u.email from customers c, users u where c.uuid = $1 and u.uuid = c.uuid",
     [id]
   );
   return rows[0];
@@ -40,7 +39,6 @@ module.exports.userExists = async (username) => {
 
 module.exports.addUser = async (email, password, fullname, phone, address) => {
   var uuid = await generateUUID();
-  console.log("adding ...");
   await db.query(
     "insert into users (uuid, email, password, admin) values ($1, $2, $3, false)",
     [uuid, email, password]
@@ -62,12 +60,10 @@ module.exports.getUserByEmail = async (email) => {
 };
 
 module.exports.emailExists = async (email) => {
-  console.log("checking ...");
   const { rowCount } = await db.query(
     "select * from users where email = $1 limit 1",
     [email]
   );
-  console.log(rowCount);
   return rowCount > 0;
 };
 
@@ -76,4 +72,11 @@ module.exports.getAllUser = async () => {
     "select c.uuid, u.email, c.full_name, c.phone_number, c.address, c.create_date, c.banned from users u, customers c where u.uuid = c.uuid order by uuid"
   );
   return rows;
+};
+
+module.exports.updateUserStatis = async (id, banned) => {
+  await db.query("update customers set banned = $2 where uuid = $1", [
+    id,
+    banned,
+  ]);
 };
