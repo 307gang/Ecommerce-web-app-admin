@@ -5,17 +5,17 @@ const morgan = require("morgan");
 const path = require("path");
 const hbs = require("hbs");
 
-const indexRoute = require("./index/route/indexRoute");
-const accountRoute = require("./accounts/route/accountRoute");
-const usersRoute = require("./users/route/usersRoute");
-const itemsRoute = require("./items/route/itemsRoute");
-const brandsRoute = require("./brands/route/brandsRoute");
+const indexRoute = require("./index/routes/indexRoute");
+const accountRoute = require("./accounts/routes/accountRoute");
+const usersRoute = require("./users/routes/usersRoute");
+const itemsRoute = require("./items/routes/itemsRoute");
+const brandsRoute = require("./brands/routes/brandsRoute");
 
-const productDatabase = require("./database/route/productsRoute");
-const categoryDatabase = require("./database/route/categoriesRoute");
-const brandDatabase = require("./database/route/brandsRoute");
-const totalDatabase = require("./database/route/totalRoute");
-const userDatabase = require("./database/route/usersRoute");
+const productDatabase = require("./database/routes/productsRoute");
+const categoryDatabase = require("./database/routes/categoriesRoute");
+const brandDatabase = require("./database/routes/brandsRoute");
+const totalDatabase = require("./database/routes/totalRoute");
+const userDatabase = require("./database/routes/usersRoute");
 
 const imgRoute = require("./imgAuth/routes/authRoute");
 
