@@ -12,12 +12,14 @@ const usersRoute = require("./users/routes/usersRoute");
 const itemsRoute = require("./items/routes/itemsRoute");
 const newItemRoute = require("./items/routes/newItemRoute");
 const brandsRoute = require("./brands/routes/brandsRoute");
+const orderRoute = require("./orders/routes/orderRoute");
 
 const productDatabase = require("./database/routes/productsRoute");
 const categoryDatabase = require("./database/routes/categoriesRoute");
 const brandDatabase = require("./database/routes/brandsRoute");
 const totalDatabase = require("./database/routes/totalRoute");
 const userDatabase = require("./database/routes/usersRoute");
+
 const passport = require("./accounts/models/authenticatePassport");
 
 const imgRoute = require("./imgAuth/routes/authRoute");
@@ -60,6 +62,7 @@ var viewLocation = [
   path.join(__dirname, "/users/view"),
   path.join(__dirname, "/items/view"),
   path.join(__dirname, "/brands/view"),
+  path.join(__dirname, "/orders/view"),
   path.join(__dirname, "/error"),
 ];
 
@@ -77,6 +80,7 @@ app.use("/users", usersRoute);
 app.use("/shop-items", itemsRoute);
 app.use("/new-items", newItemRoute);
 app.use("/shop-brands", brandsRoute);
+app.use("/shop-orders", orderRoute);
 app.use("/api/product", productDatabase);
 app.use("/api/brand", brandDatabase);
 app.use("/api/category", categoryDatabase);

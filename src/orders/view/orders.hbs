@@ -1,0 +1,64 @@
+<body class="sb-nav-fixed">
+  <!-- main content -->
+  <div id="layoutSidenav_content">
+    <main>
+      <h1>Danh sách các hãng</h1>
+      <table id="order-table" class="hover cell-border order-column">
+        <thead>
+          <tr>
+            <th>Mã đơn hàng</th>
+            <th>Tên đơn hàng</th>
+            <th>Thông tin thêm</th>
+            <th>Chủ đơn hàng</th>
+            <th>Ngày tạo</th>
+            <th>Trạng thái</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each orders}}
+            <tr>
+              <td>{{order_id}}</td>
+              <td>{{order_name}}</td>
+              <td>{{description}}</td>
+              <td>{{customer_id}}</td>
+              <td>{{create_date}}</td>
+              <td>{{status}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </main>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script
+    type="text/javascript"
+    charset="utf8"
+    src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.datatables.net/v/dt/dt-1.13.1/b-2.3.3/datatables.min.js"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="/js/scripts.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="/js/orders.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"
+  ></script>
+  <script
+    src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"
+  ></script>
+</body>

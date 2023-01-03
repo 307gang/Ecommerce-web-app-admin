@@ -1,0 +1,100 @@
+<body>
+    <div id="layoutSidenav_content">
+        <main>
+        <div class="row profile-form mb-5 align-items-center"> 
+            <h1>Thông tin đơn hàng</h1>
+  <h2>Các sản phẩm</h2>
+  <table id="product-table" class="hover cell-border order-column">
+        <thead>
+          <tr>
+            <th>Mã sãn phẩm</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each order.products}}
+            <tr>
+              <td>{{product_id}}</td>
+              <td>{{product_name}}</td>
+              <td>{{quantity}}</td>
+              <td>{{price}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+  </table>
+             <h2>Các thông tin khác</h2>   
+        <form method="post" class="mt-5 p-5 bg-light shadow d-flex flex-column">
+            <div class="form-group">
+                <label for="formGroupExampleInput">ID</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="ID" name="order_id" value="{{order.order_id}}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Tên đơn hàng/label>
+                <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="tên" name="order_name" value="{{order.order_name}}">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput">Thông tin đơn hàng</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Thông tin sản phẩm" name="description" value="{{order.description}}">
+            </div>
+
+            <div class="form-group">
+                <label for="formGroupExampleInput">Mã người đặt</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="" name="customer_id" value="{{order.customer_id}}">
+            </div>
+
+            <div class="form-group">
+                <label for="formGroupExampleInput">Trạng thái (0 - chuẩn bị giao, 1 - đang giao, 2 - đã giao)</label>
+                <input type="number" class="form-control" id="formGroupExampleInput" placeholder="" name="status" value="{{order.status}}">
+            </div>
+            
+            <button id="save"  type="submit" class="btn btn-outline-dark" type="button">Lưu</button>
+            <a class="btn btn-outline-secondary" href="/shop-orders">Quay lại</a>
+        </form>
+        </div>
+        </main>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script
+          type="text/javascript"
+          charset="utf8"
+          src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"
+        ></script>
+        <script
+          type="text/javascript"
+          src="https://cdn.datatables.net/v/dt/dt-1.13.1/b-2.3.3/datatables.min.js"
+        ></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+          crossorigin="anonymous"
+        ></script>
+        <script src="/js/scripts.js"></script>
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+          crossorigin="anonymous"
+        ></script>
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"
+        ></script>
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"
+        ></script>
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"
+        ></script>
+        <script
+          src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js"
+        ></script>
+        <script>
+            $(document).ready(() => {
+                $("#product-table").DataTable({
+                    language: {
+                      url: "https://cdn.datatables.net/plug-ins/1.13.1/i18n/vi.json",
+                    },
+                    dom: "Bfrtip",
+                    buttons: ["csv", "excel", "pdf"],
+                });
+            })
+        </script>
+</body>
