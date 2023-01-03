@@ -40,7 +40,7 @@
       <!-- nav bar -->
       <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="/">Trang Quản trị 307store</a>
+        <a class="navbar-brand ps-3" href="/dashboard">Trang Quản trị 307store</a>
         <!-- Sidebar Toggle-->
         <button
           class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
@@ -81,10 +81,12 @@
               class="dropdown-menu dropdown-menu-end"
               aria-labelledby="navbarDropdown"
             >
+              <li><a class="dropdown-item" href="/account/info">Thông tin tài
+                  khoản</a></li>
               <li><a class="dropdown-item" href="#!">Cài đặt</a></li>
               <li><a class="dropdown-item" href="#!">Activity Log</a></li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="/account/login">Đăng xuất</a></li>
+              <li><a class="dropdown-item" href="/account/logout">Đăng xuất</a></li>
             </ul>
           </li>
         </ul>
@@ -98,7 +100,7 @@
             <div class="sb-sidenav-menu">
               <div class="nav">
                 <div class="sb-sidenav-menu-heading">Tổng kết doanh thu</div>
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/dashboard">
                   <div class="sb-nav-link-icon"><i
                       class="fas fa-tachometer-alt"
                     ></i></div>
@@ -170,7 +172,7 @@
             </div>
             <div class="sb-sidenav-footer">
               <div class="small" lang="vn">Đang đăng nhập bằng:</div>
-              Admin XX
+              {{user.email}}
             </div>
           </nav>
         </div>

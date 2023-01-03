@@ -8,17 +8,6 @@ module.exports = async (req) => {
   var { hidden } = req.body;
   if (hidden == "on") hidden = true;
   else hidden = false;
-  console.log(
-    product_id,
-    product_name,
-    brand_id,
-    category_id,
-    price,
-    description,
-    product_image,
-    product_stock,
-    hidden
-  );
   await db.updateProduct(
     product_id,
     product_name,

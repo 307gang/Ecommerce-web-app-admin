@@ -29,6 +29,21 @@ module.exports.getUserInfo = async (id) => {
   return rows[0];
 };
 
+module.exports.getAdminInfo = async (id) => {
+  var { rows } = await db.query(
+    "select a.*, u.email from admins a, users u where a.uuid = $1 and a.uuid = u.uuid",
+    [id]
+  );
+  return rows[0];
+};
+
+module.exports.updateAdmin = async (id, fullname, phone) => {
+  await db.query(
+    "update admins set full_name = $1, phone_number = $2 where uuid = $3",
+    [fullname, phone, id]
+  );
+};
+
 module.exports.userExists = async (username) => {
   const { rowCount } = await db.query(
     "select * from users where username = $1",
@@ -53,7 +68,7 @@ module.exports.addUser = async (email, password, fullname, phone, address) => {
 
 module.exports.getUserByEmail = async (email) => {
   var { rows } = await db.query(
-    "select * from users where email = $1 limit 1",
+    "select * from users where email = $1 and admin = true limit 1",
     [email]
   );
   return rows[0];

@@ -3,6 +3,7 @@ const brandModel = require("../models/getBrands");
 const catModel = require("../models/getCategories");
 
 module.exports = async (req, res) => {
+  if (!req.user) res.redirect("/");
   const { id } = req.params;
   var product = await itemModel.getItemInfo(id);
   var cur_brd = await brandModel.getBrandById(product.brand_id);

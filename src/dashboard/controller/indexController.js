@@ -1,5 +1,7 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = (req, res) => {
-    res.render("index");
+  //   console.log(req.user);
+  if (!req.user) res.redirect("/");
+  res.render("index");
 };

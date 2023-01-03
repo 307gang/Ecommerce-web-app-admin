@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const path = require("path");
 const hbs = require("hbs");
+let session = require("express-session");
 
 const dashboardRoute = require("./dashboard/routes/indexRoute");
 const accountRoute = require("./accounts/routes/accountRoute");
@@ -17,6 +18,7 @@ const categoryDatabase = require("./database/routes/categoriesRoute");
 const brandDatabase = require("./database/routes/brandsRoute");
 const totalDatabase = require("./database/routes/totalRoute");
 const userDatabase = require("./database/routes/usersRoute");
+const passport = require("./accounts/models/authenticatePassport");
 
 const imgRoute = require("./imgAuth/routes/authRoute");
 
@@ -26,9 +28,22 @@ var app = express();
 
 //middleware
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(morgan("dev"));
+
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.authenticate("session"));
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
 
 hbs.registerHelper("block", function (name) {
   let val = (blocks[name] || []).join("\n");
@@ -54,7 +69,7 @@ app.set("view engine", "hbs");
 
 // url routing
 app.get("/", (req, res) => {
-  res.redirect("/dashboard");
+  res.redirect("/account/login");
 });
 app.use("/dashboard", dashboardRoute);
 app.use("/account", accountRoute);
