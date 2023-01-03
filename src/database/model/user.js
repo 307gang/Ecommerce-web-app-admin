@@ -74,7 +74,7 @@ module.exports.getAllUser = async () => {
   return rows;
 };
 
-module.exports.updateUserStatis = async (id, banned) => {
+module.exports.updateUserStatus = async (id, banned) => {
   await db.query("update customers set banned = $2 where uuid = $1", [
     id,
     banned,

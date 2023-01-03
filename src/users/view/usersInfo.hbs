@@ -34,10 +34,10 @@
 
 
                 <div class="checkbox">
-                    {{#if product.hidden}}
-                    <label><input type="checkbox" name="hidden" checked>Banned</label>
+                    {{#if customer.banned}}
+                    <label><input type="checkbox" name="banned" checked>Banned</label>
                     {{else}}
-                    <label><input type="checkbox" name="hidden">Ẩn</label>
+                    <label><input type="checkbox" name="banned">Ẩn</label>
                     {{/if}}
                 </div>
                 <button id="save"  type="submit" class="btn btn-outline-dark" type="button">Lưu</button>
